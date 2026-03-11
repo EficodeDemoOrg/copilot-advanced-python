@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>&#9729; Weather Dashboard</h1>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <div class="search-bar">
+                <input type="number" id="lat-input" placeholder="Latitude" step="any" min="-90" max="90">
+                <input type="number" id="lon-input" placeholder="Longitude" step="any" min="-180" max="180">
+                <select id="units-select">
+                    <option value="celsius" selected>°C</option>
+                    <option value="fahrenheit">°F</option>
+                    <option value="kelvin">K</option>
+                </select>
+                <button id="search-btn">Search</button>
+                <button id="save-btn" title="Save this location">&#9734; Save</button>
+            </div>
+            <div id="search-error" class="error hidden"></div>
+        </section>
+
+        <div class="dashboard-grid">
+            <section class="sidebar">
+                <h2>Saved Locations</h2>
+                <ul id="locations-list"></ul>
+            </section>
+
+            <section class="main-content">
+                <div id="current-weather" class="weather-card hidden">
+                    <h2 id="location-name">—</h2>
+                    <div class="weather-details">
+                        <div class="weather-icon">
+                            <img id="weather-icon" src="" alt="Weather icon">
+                            <span id="weather-desc">—</span>
+                        </div>
+                        <div class="weather-stats">
+                            <div class="stat">
+                                <span class="stat-label">Temperature</span>
+                                <span class="stat-value" id="temperature">—</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Feels Like</span>
+                                <span class="stat-value" id="feels-like">—</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Humidity</span>
+                                <span class="stat-value" id="humidity">—</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Pressure</span>
+                                <span class="stat-value" id="pressure">—</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Wind</span>
+                                <span class="stat-value" id="wind">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="alerts-section" class="hidden">
+                    <h3>&#9888; Weather Alerts</h3>
+                    <ul id="alerts-list"></ul>
+                </div>
+
+                <div id="forecast-section" class="hidden">
+                    <h3>5-Day Forecast</h3>
+                    <div class="chart-container">
+                        <canvas id="forecast-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Weather App &mdash; A GitHub Copilot exercise project. Data from <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a>.</p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
